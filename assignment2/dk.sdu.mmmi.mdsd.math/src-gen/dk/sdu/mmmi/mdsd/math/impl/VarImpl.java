@@ -5,7 +5,7 @@ package dk.sdu.mmmi.mdsd.math.impl;
 
 import dk.sdu.mmmi.mdsd.math.Exp;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
-import dk.sdu.mmmi.mdsd.math.Minus;
+import dk.sdu.mmmi.mdsd.math.Var;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,19 +17,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Minus</b></em>'.
+ * An implementation of the model object '<em><b>Var</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.MinusImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.MinusImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getName <em>Name</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getRight <em>Right</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MinusImpl extends ExpImpl implements Minus
+public class VarImpl extends ExpImpl implements Var
 {
   /**
    * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
@@ -40,6 +41,26 @@ public class MinusImpl extends ExpImpl implements Minus
    * @ordered
    */
   protected Exp left;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -56,7 +77,7 @@ public class MinusImpl extends ExpImpl implements Minus
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MinusImpl()
+  protected VarImpl()
   {
     super();
   }
@@ -69,7 +90,7 @@ public class MinusImpl extends ExpImpl implements Minus
   @Override
   protected EClass eStaticClass()
   {
-    return MathPackage.Literals.MINUS;
+    return MathPackage.Literals.VAR;
   }
 
   /**
@@ -94,7 +115,7 @@ public class MinusImpl extends ExpImpl implements Minus
     left = newLeft;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.MINUS__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.VAR__LEFT, oldLeft, newLeft);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -112,14 +133,39 @@ public class MinusImpl extends ExpImpl implements Minus
     {
       NotificationChain msgs = null;
       if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.MINUS__LEFT, null, msgs);
+        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__LEFT, null, msgs);
       if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.MINUS__LEFT, null, msgs);
+        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__LEFT, null, msgs);
       msgs = basicSetLeft(newLeft, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.MINUS__LEFT, newLeft, newLeft));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__LEFT, newLeft, newLeft));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__NAME, oldName, name));
   }
 
   /**
@@ -144,7 +190,7 @@ public class MinusImpl extends ExpImpl implements Minus
     right = newRight;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.MINUS__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.VAR__RIGHT, oldRight, newRight);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -162,14 +208,14 @@ public class MinusImpl extends ExpImpl implements Minus
     {
       NotificationChain msgs = null;
       if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.MINUS__RIGHT, null, msgs);
+        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__RIGHT, null, msgs);
       if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.MINUS__RIGHT, null, msgs);
+        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__RIGHT, null, msgs);
       msgs = basicSetRight(newRight, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.MINUS__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__RIGHT, newRight, newRight));
   }
 
   /**
@@ -182,9 +228,9 @@ public class MinusImpl extends ExpImpl implements Minus
   {
     switch (featureID)
     {
-      case MathPackage.MINUS__LEFT:
+      case MathPackage.VAR__LEFT:
         return basicSetLeft(null, msgs);
-      case MathPackage.MINUS__RIGHT:
+      case MathPackage.VAR__RIGHT:
         return basicSetRight(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -200,9 +246,11 @@ public class MinusImpl extends ExpImpl implements Minus
   {
     switch (featureID)
     {
-      case MathPackage.MINUS__LEFT:
+      case MathPackage.VAR__LEFT:
         return getLeft();
-      case MathPackage.MINUS__RIGHT:
+      case MathPackage.VAR__NAME:
+        return getName();
+      case MathPackage.VAR__RIGHT:
         return getRight();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -218,10 +266,13 @@ public class MinusImpl extends ExpImpl implements Minus
   {
     switch (featureID)
     {
-      case MathPackage.MINUS__LEFT:
+      case MathPackage.VAR__LEFT:
         setLeft((Exp)newValue);
         return;
-      case MathPackage.MINUS__RIGHT:
+      case MathPackage.VAR__NAME:
+        setName((String)newValue);
+        return;
+      case MathPackage.VAR__RIGHT:
         setRight((Exp)newValue);
         return;
     }
@@ -238,10 +289,13 @@ public class MinusImpl extends ExpImpl implements Minus
   {
     switch (featureID)
     {
-      case MathPackage.MINUS__LEFT:
+      case MathPackage.VAR__LEFT:
         setLeft((Exp)null);
         return;
-      case MathPackage.MINUS__RIGHT:
+      case MathPackage.VAR__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case MathPackage.VAR__RIGHT:
         setRight((Exp)null);
         return;
     }
@@ -258,12 +312,31 @@ public class MinusImpl extends ExpImpl implements Minus
   {
     switch (featureID)
     {
-      case MathPackage.MINUS__LEFT:
+      case MathPackage.VAR__LEFT:
         return left != null;
-      case MathPackage.MINUS__RIGHT:
+      case MathPackage.VAR__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case MathPackage.VAR__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //MinusImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
+  }
+
+} //VarImpl

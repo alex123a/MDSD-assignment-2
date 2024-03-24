@@ -9,7 +9,9 @@ import dk.sdu.mmmi.mdsd.math.MathExp
 import dk.sdu.mmmi.mdsd.math.Minus
 import dk.sdu.mmmi.mdsd.math.Mult
 import dk.sdu.mmmi.mdsd.math.Plus
-import dk.sdu.mmmi.mdsd.math.Primary
+import dk.sdu.mmmi.mdsd.math.Var
+import dk.sdu.mmmi.mdsd.math.MyNumber
+import dk.sdu.mmmi.mdsd.math.Let
 import java.util.HashMap
 import java.util.Map
 import javax.swing.JOptionPane
@@ -41,18 +43,44 @@ class MathGenerator extends AbstractGenerator {
 	//
 	
 	def static compute(MathExp math) { 
-		math.exp.computeExp
+		println("Result: " + math.exp.computeExp)
 		return variables
 	}
 	
 	def static int computeExp(Exp exp) {
-		val left = exp.left.computePrim
-		switch exp.operator {
+		/*
+		 switch exp.operator {			
 			Plus: left+exp.right.computePrim
 			Minus: left-exp.right.computePrim
 			Mult: left*exp.right.computePrim
 			Div: left/exp.right.computePrim
 			default: left
+		}
+		 */
+		
+		println("Fuck: " + exp.getClass())
+		if (exp instanceof Plus) {
+			return exp.left.computeExp + exp.right.computeExp
+		} else if (exp instanceof Minus) {
+			return exp.left.computeExp - exp.right.computeExp
+		} else if (exp instanceof Mult) {
+			var value = exp.left.computeExp * exp.right.computeExp
+			println("What is this: " + value)
+			return exp.left.computeExp * exp.right.computeExp
+		} else if (exp instanceof Div) {
+			return exp.left.computeExp / exp.right.computeExp
+		} else if (exp instanceof MyNumber) {
+			return exp.value
+		} else if (exp instanceof Var) {
+			var value = exp.right.computeExp
+			variables.put(exp.name, value)
+			return value
+		} else if (exp instanceof Let) {
+			println("Max er homo: " + exp.name)
+			var value = exp.right.computeExp
+			return value
+		} else {
+			return 0
 		}
 	}
 	
