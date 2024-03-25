@@ -7,10 +7,17 @@ MathExp: exp=Exp;
 Exp: Var;
 
 Var returns Exp:
+	Let (
+		({Var.left=current} 'var ' name=ID ' = ' right=Let)
+	)*
+;
+
+Let returns Exp:
 	PlusMinus (
-		({Var.left=current} 'var ' name=ID ' = ' right=Var) |
-		({Let.left=current} 'let ' name=ID (' = ' | '=') right=PlusMinus)
-	)
+		({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=') right=PlusMinus) |
+		({In.left=current} ('in' | ' in ') right=PlusMinus) |
+		({End.left=current} ('end' | ' end ') right=PlusMinus)
+	)*
 ;
 
 PlusMinus returns Exp: 
@@ -28,74 +35,4 @@ Term returns Exp:
 	)*
 ;
 
-Primary returns Exp: {MyNumber} value=INT | '(' Exp ')';
-
-/*
-ExpressionsModel:
-    elements +=AbstractElement*
-;
-
-AbstractElement:
-    Variable | EvalExpression;
-    
-Variable:
-    'var' name=ID '=' expression=Expression;
-
-EvalExpression:
-    'eval' expression=Expression;
-
-Expression: 
-    PlusOrMinus
-;
-
-PlusOrMinus returns Expression:
-    MulOrDiv (({Plus.left=current} '+' | {Minus.left=current} '-') right=MulOrDiv)*
-;
-
-MulOrDiv returns Expression:
-    Primary({MulOrDiv.left = current} op=("*"|"/") right=Primary)*
-;
-
-Primary returns Expression:
-    '(' Expression ')' |
-    {Not} "!" expression=Primary | Atomic
-;
-
-Atomic returns Expression:
-    {IntConstant} value=INT |
-    {StringConstant} value=STRING |
-    {BoolConstant} value=('true'|'false') |
-    {VariableRef} variable=[Variable]
-;
-*/
-
-/*
-MathExp:
-	'var' name=ID '=' exp=Exp
-;
-
- 
-Exp:
-	left=Primary (operator=ExpOp right=Primary)?
-;
- 
-ExpOp:
-	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
-;
-
-Primary:
-	Number | Parenthesis | VariableUse
-;
-
-Parenthesis:
-	'(' exp=Exp ')'
-;
-
-Number:
-	value=INT
-;
-
-VariableUse:
-	ref = [MathExp]
-; 
-*/
+Primary returns Exp: {MyNumber} value=INT | {MyString} value=ID | '(' Exp ')';

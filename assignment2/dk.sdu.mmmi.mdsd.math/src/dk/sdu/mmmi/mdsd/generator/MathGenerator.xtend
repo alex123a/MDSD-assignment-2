@@ -12,6 +12,8 @@ import dk.sdu.mmmi.mdsd.math.Plus
 import dk.sdu.mmmi.mdsd.math.Var
 import dk.sdu.mmmi.mdsd.math.MyNumber
 import dk.sdu.mmmi.mdsd.math.Let
+import dk.sdu.mmmi.mdsd.math.In
+import dk.sdu.mmmi.mdsd.math.MyString
 import java.util.HashMap
 import java.util.Map
 import javax.swing.JOptionPane
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import dk.sdu.mmmi.mdsd.math.End
 
 /**
  * Generates code from your model files on save.
@@ -43,7 +46,7 @@ class MathGenerator extends AbstractGenerator {
 	//
 	
 	def static compute(MathExp math) { 
-		println("Result: " + math.exp.computeExp)
+		math.exp.computeExp
 		return variables
 	}
 	
@@ -57,36 +60,45 @@ class MathGenerator extends AbstractGenerator {
 			default: left
 		}
 		 */
-		
-		println("Fuck: " + exp.getClass())
 		if (exp instanceof Plus) {
 			return exp.left.computeExp + exp.right.computeExp
 		} else if (exp instanceof Minus) {
 			return exp.left.computeExp - exp.right.computeExp
 		} else if (exp instanceof Mult) {
-			var value = exp.left.computeExp * exp.right.computeExp
-			println("What is this: " + value)
 			return exp.left.computeExp * exp.right.computeExp
 		} else if (exp instanceof Div) {
 			return exp.left.computeExp / exp.right.computeExp
 		} else if (exp instanceof MyNumber) {
 			return exp.value
+		} else if (exp instanceof MyString) {
+			return variables.get(exp.value)
 		} else if (exp instanceof Var) {
+			exp.left.computeExp
 			var value = exp.right.computeExp
 			variables.put(exp.name, value)
-			return value
+			return 0
 		} else if (exp instanceof Let) {
-			println("Max er homo: " + exp.name)
+			println("Left: " + exp.left.computeExp)
+			println("Right: " + exp.right.computeExp)
+			println("Combined: " + exp.left.computeExp + exp.right.computeExp)
+			exp.left.computeExp
 			var value = exp.right.computeExp
-			return value
+			variables.put(exp.name, value)
+			return 0
+		} else if (exp instanceof In) {
+			return exp.left.computeExp + exp.right.computeExp
+		} else if (exp instanceof End) {
+			return exp.left.computeExp + exp.right.computeExp
 		} else {
 			return 0
 		}
 	}
 	
-	def static int computePrim(Primary factor) { 
-		87
-	}
+	/*
+	 	def static int computePrim(Primary factor) { 
+			87
+		}
+	 */
 
 	def void displayPanel(Map<String, Integer> result) {
 		var resultString = ""
