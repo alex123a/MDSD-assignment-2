@@ -123,13 +123,13 @@ public interface MathFactory extends EFactory
   MyNumber createMyNumber();
 
   /**
-   * Returns a new object of class '<em>My String</em>'.
+   * Returns a new object of class '<em>Variable Use</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>My String</em>'.
+   * @return a new object of class '<em>Variable Use</em>'.
    * @generated
    */
-  MyString createMyString();
+  VariableUse createVariableUse();
 
   /**
    * Returns the package supported by this factory.

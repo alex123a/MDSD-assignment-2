@@ -615,7 +615,7 @@ rulePrimary returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getPrimaryAccess().getMyStringAction_1_0(),
+						grammarAccess.getPrimaryAccess().getVariableUseAction_1_0(),
 						$current);
 				}
 			)

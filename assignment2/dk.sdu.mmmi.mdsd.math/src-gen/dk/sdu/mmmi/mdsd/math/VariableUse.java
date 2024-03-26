@@ -6,21 +6,21 @@ package dk.sdu.mmmi.mdsd.math;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>My String</b></em>'.
+ * A representation of the model object '<em><b>Variable Use</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.MyString#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.VariableUse#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see dk.sdu.mmmi.mdsd.math.MathPackage#getMyString()
+ * @see dk.sdu.mmmi.mdsd.math.MathPackage#getVariableUse()
  * @model
  * @generated
  */
-public interface MyString extends Exp
+public interface VariableUse extends Exp
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -28,14 +28,14 @@ public interface MyString extends Exp
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
    * @see #setValue(String)
-   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getMyString_Value()
+   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getVariableUse_Value()
    * @model
    * @generated
    */
   String getValue();
 
   /**
-   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.MyString#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.VariableUse#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.
@@ -44,4 +44,4 @@ public interface MyString extends Exp
    */
   void setValue(String value);
 
-} // MyString
+} // VariableUse

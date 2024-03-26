@@ -1549,7 +1549,7 @@ public class InternalMathParser extends AbstractInternalAntlrParser {
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getPrimaryAccess().getMyStringAction_1_0(),
+                    						grammarAccess.getPrimaryAccess().getVariableUseAction_1_0(),
                     						current);
                     				
 

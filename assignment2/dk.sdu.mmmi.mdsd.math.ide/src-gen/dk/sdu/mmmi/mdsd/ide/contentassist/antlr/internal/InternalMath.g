@@ -1448,9 +1448,9 @@ rule__Primary__Group_1__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getPrimaryAccess().getMyStringAction_1_0()); }
+	{ before(grammarAccess.getPrimaryAccess().getVariableUseAction_1_0()); }
 	()
-	{ after(grammarAccess.getPrimaryAccess().getMyStringAction_1_0()); }
+	{ after(grammarAccess.getPrimaryAccess().getVariableUseAction_1_0()); }
 )
 ;
 finally {

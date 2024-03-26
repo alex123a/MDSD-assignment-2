@@ -389,7 +389,7 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
 		private final RuleCall cValueINTTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cMyStringAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cVariableUseAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cValueIDTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
@@ -397,10 +397,10 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final RuleCall cExpParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
-		//Primary returns Exp: {MyNumber} value=INT | {MyString} value=ID | '(' Exp ')';
+		//Primary returns Exp: {MyNumber} value=INT | {VariableUse} value=ID | '(' Exp ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{MyNumber} value=INT | {MyString} value=ID | '(' Exp ')'
+		//{MyNumber} value=INT | {VariableUse} value=ID | '(' Exp ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{MyNumber} value=INT
@@ -415,11 +415,11 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//INT
 		public RuleCall getValueINTTerminalRuleCall_0_1_0() { return cValueINTTerminalRuleCall_0_1_0; }
 		
-		//{MyString} value=ID
+		//{VariableUse} value=ID
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{MyString}
-		public Action getMyStringAction_1_0() { return cMyStringAction_1_0; }
+		//{VariableUse}
+		public Action getVariableUseAction_1_0() { return cVariableUseAction_1_0; }
 		
 		//value=ID
 		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
@@ -570,7 +570,7 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getTermAccess().getRule();
 	}
 	
-	//Primary returns Exp: {MyNumber} value=INT | {MyString} value=ID | '(' Exp ')';
+	//Primary returns Exp: {MyNumber} value=INT | {VariableUse} value=ID | '(' Exp ')';
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
 	}

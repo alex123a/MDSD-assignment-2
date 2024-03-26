@@ -159,11 +159,11 @@ public class MathSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MathPackage.MY_STRING:
+      case MathPackage.VARIABLE_USE:
       {
-        MyString myString = (MyString)theEObject;
-        T result = caseMyString(myString);
-        if (result == null) result = caseExp(myString);
+        VariableUse variableUse = (VariableUse)theEObject;
+        T result = caseVariableUse(variableUse);
+        if (result == null) result = caseExp(variableUse);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -348,17 +348,17 @@ public class MathSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>My String</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Variable Use</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>My String</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Variable Use</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMyString(MyString object)
+  public T caseVariableUse(VariableUse object)
   {
     return null;
   }

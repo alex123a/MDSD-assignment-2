@@ -47,8 +47,8 @@
     <genClasses ecoreClass="Math.ecore#//MyNumber">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Math.ecore#//MyNumber/value"/>
     </genClasses>
-    <genClasses ecoreClass="Math.ecore#//MyString">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Math.ecore#//MyString/value"/>
+    <genClasses ecoreClass="Math.ecore#//VariableUse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Math.ecore#//VariableUse/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

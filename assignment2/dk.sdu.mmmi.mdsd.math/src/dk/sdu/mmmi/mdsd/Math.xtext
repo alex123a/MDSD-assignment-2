@@ -35,4 +35,4 @@ Term returns Exp:
 	)*
 ;
 
-Primary returns Exp: {MyNumber} value=INT | {MyString} value=ID | '(' Exp ')';
+Primary returns Exp: {MyNumber} value=INT | {VariableUse} value=ID | '(' Exp ')';

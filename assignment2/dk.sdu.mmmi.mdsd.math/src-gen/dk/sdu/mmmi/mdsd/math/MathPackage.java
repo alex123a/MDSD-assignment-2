@@ -447,14 +447,14 @@ public interface MathPackage extends EPackage
   int MY_NUMBER_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.MyStringImpl <em>My String</em>}' class.
+   * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl <em>Variable Use</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see dk.sdu.mmmi.mdsd.math.impl.MyStringImpl
-   * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMyString()
+   * @see dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl
+   * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getVariableUse()
    * @generated
    */
-  int MY_STRING = 11;
+  int VARIABLE_USE = 11;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -463,16 +463,16 @@ public interface MathPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MY_STRING__VALUE = EXP_FEATURE_COUNT + 0;
+  int VARIABLE_USE__VALUE = EXP_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>My String</em>' class.
+   * The number of structural features of the '<em>Variable Use</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MY_STRING_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
+  int VARIABLE_USE_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
 
 
   /**
@@ -806,25 +806,25 @@ public interface MathPackage extends EPackage
   EAttribute getMyNumber_Value();
 
   /**
-   * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.MyString <em>My String</em>}'.
+   * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.VariableUse <em>Variable Use</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>My String</em>'.
-   * @see dk.sdu.mmmi.mdsd.math.MyString
+   * @return the meta object for class '<em>Variable Use</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.VariableUse
    * @generated
    */
-  EClass getMyString();
+  EClass getVariableUse();
 
   /**
-   * Returns the meta object for the attribute '{@link dk.sdu.mmmi.mdsd.math.MyString#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link dk.sdu.mmmi.mdsd.math.VariableUse#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see dk.sdu.mmmi.mdsd.math.MyString#getValue()
-   * @see #getMyString()
+   * @see dk.sdu.mmmi.mdsd.math.VariableUse#getValue()
+   * @see #getVariableUse()
    * @generated
    */
-  EAttribute getMyString_Value();
+  EAttribute getVariableUse_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1120,14 +1120,14 @@ public interface MathPackage extends EPackage
     EAttribute MY_NUMBER__VALUE = eINSTANCE.getMyNumber_Value();
 
     /**
-     * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.MyStringImpl <em>My String</em>}' class.
+     * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl <em>Variable Use</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see dk.sdu.mmmi.mdsd.math.impl.MyStringImpl
-     * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMyString()
+     * @see dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl
+     * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getVariableUse()
      * @generated
      */
-    EClass MY_STRING = eINSTANCE.getMyString();
+    EClass VARIABLE_USE = eINSTANCE.getVariableUse();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -1135,7 +1135,7 @@ public interface MathPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MY_STRING__VALUE = eINSTANCE.getMyString_Value();
+    EAttribute VARIABLE_USE__VALUE = eINSTANCE.getVariableUse_Value();
 
   }
 

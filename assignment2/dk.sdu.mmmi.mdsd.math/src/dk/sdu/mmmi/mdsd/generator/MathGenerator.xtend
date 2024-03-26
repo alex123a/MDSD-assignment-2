@@ -13,7 +13,7 @@ import dk.sdu.mmmi.mdsd.math.Var
 import dk.sdu.mmmi.mdsd.math.MyNumber
 import dk.sdu.mmmi.mdsd.math.Let
 import dk.sdu.mmmi.mdsd.math.In
-import dk.sdu.mmmi.mdsd.math.MyString
+import dk.sdu.mmmi.mdsd.math.VariableUse
 import java.util.HashMap
 import java.util.Map
 import javax.swing.JOptionPane
@@ -51,15 +51,6 @@ class MathGenerator extends AbstractGenerator {
 	}
 	
 	def static int computeExp(Exp exp) {
-		/*
-		 switch exp.operator {			
-			Plus: left+exp.right.computePrim
-			Minus: left-exp.right.computePrim
-			Mult: left*exp.right.computePrim
-			Div: left/exp.right.computePrim
-			default: left
-		}
-		 */
 		if (exp instanceof Plus) {
 			return exp.left.computeExp + exp.right.computeExp
 		} else if (exp instanceof Minus) {
@@ -70,7 +61,7 @@ class MathGenerator extends AbstractGenerator {
 			return exp.left.computeExp / exp.right.computeExp
 		} else if (exp instanceof MyNumber) {
 			return exp.value
-		} else if (exp instanceof MyString) {
+		} else if (exp instanceof VariableUse) {
 			return variables.get(exp.value)
 		} else if (exp instanceof Var) {
 			exp.left.computeExp
@@ -78,9 +69,6 @@ class MathGenerator extends AbstractGenerator {
 			variables.put(exp.name, value)
 			return 0
 		} else if (exp instanceof Let) {
-			println("Left: " + exp.left.computeExp)
-			println("Right: " + exp.right.computeExp)
-			println("Combined: " + exp.left.computeExp + exp.right.computeExp)
 			exp.left.computeExp
 			var value = exp.right.computeExp
 			variables.put(exp.name, value)

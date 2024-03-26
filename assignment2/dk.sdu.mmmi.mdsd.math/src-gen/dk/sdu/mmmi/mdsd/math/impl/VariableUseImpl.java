@@ -4,7 +4,7 @@
 package dk.sdu.mmmi.mdsd.math.impl;
 
 import dk.sdu.mmmi.mdsd.math.MathPackage;
-import dk.sdu.mmmi.mdsd.math.MyString;
+import dk.sdu.mmmi.mdsd.math.VariableUse;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>My String</b></em>'.
+ * An implementation of the model object '<em><b>Variable Use</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.MyStringImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MyStringImpl extends ExpImpl implements MyString
+public class VariableUseImpl extends ExpImpl implements VariableUse
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -52,7 +52,7 @@ public class MyStringImpl extends ExpImpl implements MyString
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MyStringImpl()
+  protected VariableUseImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class MyStringImpl extends ExpImpl implements MyString
   @Override
   protected EClass eStaticClass()
   {
-    return MathPackage.Literals.MY_STRING;
+    return MathPackage.Literals.VARIABLE_USE;
   }
 
   /**
@@ -90,7 +90,7 @@ public class MyStringImpl extends ExpImpl implements MyString
     String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.MY_STRING__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VARIABLE_USE__VALUE, oldValue, value));
   }
 
   /**
@@ -103,7 +103,7 @@ public class MyStringImpl extends ExpImpl implements MyString
   {
     switch (featureID)
     {
-      case MathPackage.MY_STRING__VALUE:
+      case MathPackage.VARIABLE_USE__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -119,7 +119,7 @@ public class MyStringImpl extends ExpImpl implements MyString
   {
     switch (featureID)
     {
-      case MathPackage.MY_STRING__VALUE:
+      case MathPackage.VARIABLE_USE__VALUE:
         setValue((String)newValue);
         return;
     }
@@ -136,7 +136,7 @@ public class MyStringImpl extends ExpImpl implements MyString
   {
     switch (featureID)
     {
-      case MathPackage.MY_STRING__VALUE:
+      case MathPackage.VARIABLE_USE__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
     }
@@ -153,7 +153,7 @@ public class MyStringImpl extends ExpImpl implements MyString
   {
     switch (featureID)
     {
-      case MathPackage.MY_STRING__VALUE:
+      case MathPackage.VARIABLE_USE__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
@@ -176,4 +176,4 @@ public class MyStringImpl extends ExpImpl implements MyString
     return result.toString();
   }
 
-} //MyStringImpl
+} //VariableUseImpl

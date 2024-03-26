@@ -4449,13 +4449,13 @@ public class InternalMathParser extends AbstractInternalContentAssistParser {
             // InternalMath.g:1450:1: ( () )
             // InternalMath.g:1451:2: ()
             {
-             before(grammarAccess.getPrimaryAccess().getMyStringAction_1_0()); 
+             before(grammarAccess.getPrimaryAccess().getVariableUseAction_1_0()); 
             // InternalMath.g:1452:2: ()
             // InternalMath.g:1452:3: 
             {
             }
 
-             after(grammarAccess.getPrimaryAccess().getMyStringAction_1_0()); 
+             after(grammarAccess.getPrimaryAccess().getVariableUseAction_1_0()); 
 
             }
 

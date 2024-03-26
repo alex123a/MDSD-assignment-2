@@ -76,7 +76,7 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
       case MathPackage.MULT: return createMult();
       case MathPackage.DIV: return createDiv();
       case MathPackage.MY_NUMBER: return createMyNumber();
-      case MathPackage.MY_STRING: return createMyString();
+      case MathPackage.VARIABLE_USE: return createVariableUse();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -220,10 +220,10 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public MyString createMyString()
+  public VariableUse createVariableUse()
   {
-    MyStringImpl myString = new MyStringImpl();
-    return myString;
+    VariableUseImpl variableUse = new VariableUseImpl();
+    return variableUse;
   }
 
   /**

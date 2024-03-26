@@ -8,6 +8,7 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.jupiter.api.Test
 
+
 class MathScopeTest {
 	@Inject extension ParseHelper<MathExp>
 	@Inject extension ValidationTestHelper

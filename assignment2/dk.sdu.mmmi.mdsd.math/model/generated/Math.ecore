@@ -42,7 +42,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="MyNumber" eSuperTypes="#//Exp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MyString" eSuperTypes="#//Exp">
+  <eClassifiers xsi:type="ecore:EClass" name="VariableUse" eSuperTypes="#//Exp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -13,9 +13,9 @@ import dk.sdu.mmmi.mdsd.math.MathPackage;
 import dk.sdu.mmmi.mdsd.math.Minus;
 import dk.sdu.mmmi.mdsd.math.Mult;
 import dk.sdu.mmmi.mdsd.math.MyNumber;
-import dk.sdu.mmmi.mdsd.math.MyString;
 import dk.sdu.mmmi.mdsd.math.Plus;
 import dk.sdu.mmmi.mdsd.math.Var;
+import dk.sdu.mmmi.mdsd.math.VariableUse;
 import dk.sdu.mmmi.mdsd.services.MathGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -66,14 +66,14 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case MathPackage.MY_NUMBER:
 				sequence_Primary(context, (MyNumber) semanticObject); 
 				return; 
-			case MathPackage.MY_STRING:
-				sequence_Primary(context, (MyString) semanticObject); 
-				return; 
 			case MathPackage.PLUS:
 				sequence_PlusMinus(context, (Plus) semanticObject); 
 				return; 
 			case MathPackage.VAR:
 				sequence_Var(context, (Var) semanticObject); 
+				return; 
+			case MathPackage.VARIABLE_USE:
+				sequence_Primary(context, (VariableUse) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -319,29 +319,29 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Exp returns MyString
-	 *     Var returns MyString
-	 *     Var.Var_1_0 returns MyString
-	 *     Let returns MyString
-	 *     Let.Let_1_0_0 returns MyString
-	 *     Let.In_1_1_0 returns MyString
-	 *     Let.End_1_2_0 returns MyString
-	 *     PlusMinus returns MyString
-	 *     PlusMinus.Plus_1_0_0 returns MyString
-	 *     PlusMinus.Minus_1_1_0 returns MyString
-	 *     Term returns MyString
-	 *     Term.Mult_1_0_0 returns MyString
-	 *     Term.Div_1_1_0 returns MyString
-	 *     Primary returns MyString
+	 *     Exp returns VariableUse
+	 *     Var returns VariableUse
+	 *     Var.Var_1_0 returns VariableUse
+	 *     Let returns VariableUse
+	 *     Let.Let_1_0_0 returns VariableUse
+	 *     Let.In_1_1_0 returns VariableUse
+	 *     Let.End_1_2_0 returns VariableUse
+	 *     PlusMinus returns VariableUse
+	 *     PlusMinus.Plus_1_0_0 returns VariableUse
+	 *     PlusMinus.Minus_1_1_0 returns VariableUse
+	 *     Term returns VariableUse
+	 *     Term.Mult_1_0_0 returns VariableUse
+	 *     Term.Div_1_1_0 returns VariableUse
+	 *     Primary returns VariableUse
 	 *
 	 * Constraint:
 	 *     value=ID
 	 * </pre>
 	 */
-	protected void sequence_Primary(ISerializationContext context, MyString semanticObject) {
+	protected void sequence_Primary(ISerializationContext context, VariableUse semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MathPackage.Literals.MY_STRING__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathPackage.Literals.MY_STRING__VALUE));
+			if (transientValues.isValueTransient(semanticObject, MathPackage.Literals.VARIABLE_USE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathPackage.Literals.VARIABLE_USE__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPrimaryAccess().getValueIDTerminalRuleCall_1_1_0(), semanticObject.getValue());

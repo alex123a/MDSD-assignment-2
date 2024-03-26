@@ -131,9 +131,9 @@ public class MathAdapterFactory extends AdapterFactoryImpl
         return createMyNumberAdapter();
       }
       @Override
-      public Adapter caseMyString(MyString object)
+      public Adapter caseVariableUse(VariableUse object)
       {
-        return createMyStringAdapter();
+        return createVariableUseAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -323,16 +323,16 @@ public class MathAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.MyString <em>My String</em>}'.
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.VariableUse <em>Variable Use</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see dk.sdu.mmmi.mdsd.math.MyString
+   * @see dk.sdu.mmmi.mdsd.math.VariableUse
    * @generated
    */
-  public Adapter createMyStringAdapter()
+  public Adapter createVariableUseAdapter()
   {
     return null;
   }

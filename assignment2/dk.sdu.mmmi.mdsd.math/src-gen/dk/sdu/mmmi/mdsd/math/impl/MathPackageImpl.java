@@ -14,9 +14,9 @@ import dk.sdu.mmmi.mdsd.math.MathPackage;
 import dk.sdu.mmmi.mdsd.math.Minus;
 import dk.sdu.mmmi.mdsd.math.Mult;
 import dk.sdu.mmmi.mdsd.math.MyNumber;
-import dk.sdu.mmmi.mdsd.math.MyString;
 import dk.sdu.mmmi.mdsd.math.Plus;
 import dk.sdu.mmmi.mdsd.math.Var;
+import dk.sdu.mmmi.mdsd.math.VariableUse;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -115,7 +115,7 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass myStringEClass = null;
+  private EClass variableUseEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -526,9 +526,9 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * @generated
    */
   @Override
-  public EClass getMyString()
+  public EClass getVariableUse()
   {
-    return myStringEClass;
+    return variableUseEClass;
   }
 
   /**
@@ -537,9 +537,9 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
    * @generated
    */
   @Override
-  public EAttribute getMyString_Value()
+  public EAttribute getVariableUse_Value()
   {
-    return (EAttribute)myStringEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variableUseEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -615,8 +615,8 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     myNumberEClass = createEClass(MY_NUMBER);
     createEAttribute(myNumberEClass, MY_NUMBER__VALUE);
 
-    myStringEClass = createEClass(MY_STRING);
-    createEAttribute(myStringEClass, MY_STRING__VALUE);
+    variableUseEClass = createEClass(VARIABLE_USE);
+    createEAttribute(variableUseEClass, VARIABLE_USE__VALUE);
   }
 
   /**
@@ -657,7 +657,7 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     multEClass.getESuperTypes().add(this.getExp());
     divEClass.getESuperTypes().add(this.getExp());
     myNumberEClass.getESuperTypes().add(this.getExp());
-    myStringEClass.getESuperTypes().add(this.getExp());
+    variableUseEClass.getESuperTypes().add(this.getExp());
 
     // Initialize classes and features; add operations and parameters
     initEClass(mathExpEClass, MathExp.class, "MathExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -702,8 +702,8 @@ public class MathPackageImpl extends EPackageImpl implements MathPackage
     initEClass(myNumberEClass, MyNumber.class, "MyNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMyNumber_Value(), ecorePackage.getEInt(), "value", null, 0, 1, MyNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(myStringEClass, MyString.class, "MyString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMyString_Value(), ecorePackage.getEString(), "value", null, 0, 1, MyString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableUseEClass, VariableUse.class, "VariableUse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableUse_Value(), ecorePackage.getEString(), "value", null, 0, 1, VariableUse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
