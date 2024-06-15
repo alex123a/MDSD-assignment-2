@@ -7,8 +7,12 @@ import org.eclipse.xtext.diagnostics.Diagnostic
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.jupiter.api.Test
+import org.eclipse.xtext.testing.InjectWith
+import org.junit.jupiter.api.^extension.ExtendWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
 
-
+@ExtendWith(InjectionExtension)
+@InjectWith(MathInjectorProvider)
 class MathScopeTest {
 	@Inject extension ParseHelper<MathExp>
 	@Inject extension ValidationTestHelper

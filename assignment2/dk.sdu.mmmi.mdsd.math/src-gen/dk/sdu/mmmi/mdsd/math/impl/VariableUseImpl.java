@@ -3,12 +3,14 @@
  */
 package dk.sdu.mmmi.mdsd.math.impl;
 
+import dk.sdu.mmmi.mdsd.math.Binding;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
 import dk.sdu.mmmi.mdsd.math.VariableUse;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -20,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
@@ -28,24 +30,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class VariableUseImpl extends ExpImpl implements VariableUse
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected Binding ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +66,29 @@ public class VariableUseImpl extends ExpImpl implements VariableUse
    * @generated
    */
   @Override
-  public String getValue()
+  public Binding getRef()
   {
-    return value;
+    if (ref != null && ref.eIsProxy())
+    {
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (Binding)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MathPackage.VARIABLE_USE__REF, oldRef, ref));
+      }
+    }
+    return ref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Binding basicGetRef()
+  {
+    return ref;
   }
 
   /**
@@ -85,12 +97,12 @@ public class VariableUseImpl extends ExpImpl implements VariableUse
    * @generated
    */
   @Override
-  public void setValue(String newValue)
+  public void setRef(Binding newRef)
   {
-    String oldValue = value;
-    value = newValue;
+    Binding oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VARIABLE_USE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VARIABLE_USE__REF, oldRef, ref));
   }
 
   /**
@@ -103,8 +115,9 @@ public class VariableUseImpl extends ExpImpl implements VariableUse
   {
     switch (featureID)
     {
-      case MathPackage.VARIABLE_USE__VALUE:
-        return getValue();
+      case MathPackage.VARIABLE_USE__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +132,8 @@ public class VariableUseImpl extends ExpImpl implements VariableUse
   {
     switch (featureID)
     {
-      case MathPackage.VARIABLE_USE__VALUE:
-        setValue((String)newValue);
+      case MathPackage.VARIABLE_USE__REF:
+        setRef((Binding)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +149,8 @@ public class VariableUseImpl extends ExpImpl implements VariableUse
   {
     switch (featureID)
     {
-      case MathPackage.VARIABLE_USE__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case MathPackage.VARIABLE_USE__REF:
+        setRef((Binding)null);
         return;
     }
     super.eUnset(featureID);
@@ -153,27 +166,10 @@ public class VariableUseImpl extends ExpImpl implements VariableUse
   {
     switch (featureID)
     {
-      case MathPackage.VARIABLE_USE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case MathPackage.VARIABLE_USE__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
   }
 
 } //VariableUseImpl

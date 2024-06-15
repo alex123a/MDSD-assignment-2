@@ -2,22 +2,22 @@ grammar dk.sdu.mmmi.mdsd.Math with org.eclipse.xtext.common.Terminals
 
 generate math "http://www.sdu.dk/mmmi/mdsd/Math"
 
-MathExp: exp=Exp;
+Program: 'program' name=ID externals += External* exp += Var*;
 
-Exp: Var;
-
-Var returns Exp:
-	Let (
-		({Var.left=current} 'var ' name=ID ' = ' right=Let)
-	)*
+External:
+	'external' name=ID '(' paren+=Type* ')'?
 ;
 
-Let returns Exp:
-	PlusMinus (
-		({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=') right=PlusMinus) |
-		({In.left=current} ('in' | ' in ') right=PlusMinus) |
-		({End.left=current} ('end' | ' end ') right=PlusMinus)
-	)*
+Type:
+	name=ID (','|')')
+;
+
+Var:
+	'var' name=ID '=' expression=PlusMinus
+;
+
+Let:
+	'let' name=ID '=' binding=PlusMinus 'in' body=PlusMinus 'end'
 ;
 
 PlusMinus returns Exp: 
@@ -35,4 +35,20 @@ Term returns Exp:
 	)*
 ;
 
-Primary returns Exp: {MyNumber} value=INT | {VariableUse} value=ID | '(' Exp ')';
+ExternalContent:
+	name=ID '(' (paren+=PlusMinus (',' paren+=PlusMinus)*)? ')'
+;
+
+Primary returns Exp: {MyNumber} value=INT | Parenthesis | VariableUse  | Let | ExternalContent;
+
+Parenthesis returns Exp:
+	{Par} '(' paren=PlusMinus ')'
+;
+
+Binding:
+	Var | Let
+;
+
+VariableUse: 
+	ref = [Binding]
+;

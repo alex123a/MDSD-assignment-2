@@ -3,6 +3,7 @@
  */
 package dk.sdu.mmmi.mdsd.math.impl;
 
+import dk.sdu.mmmi.mdsd.math.Binding;
 import dk.sdu.mmmi.mdsd.math.Exp;
 import dk.sdu.mmmi.mdsd.math.Let;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
@@ -23,25 +24,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getName <em>Name</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getBinding <em>Binding</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LetImpl extends ExpImpl implements Let
 {
-  /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLeft()
-   * @generated
-   * @ordered
-   */
-  protected Exp left;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -63,14 +54,24 @@ public class LetImpl extends ExpImpl implements Let
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
+   * The cached value of the '{@link #getBinding() <em>Binding</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRight()
+   * @see #getBinding()
    * @generated
    * @ordered
    */
-  protected Exp right;
+  protected Exp binding;
+
+  /**
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBody()
+   * @generated
+   * @ordered
+   */
+  protected Exp body;
 
   /**
    * <!-- begin-user-doc -->
@@ -91,56 +92,6 @@ public class LetImpl extends ExpImpl implements Let
   protected EClass eStaticClass()
   {
     return MathPackage.Literals.LET;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Exp getLeft()
-  {
-    return left;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetLeft(Exp newLeft, NotificationChain msgs)
-  {
-    Exp oldLeft = left;
-    left = newLeft;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET__LEFT, oldLeft, newLeft);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setLeft(Exp newLeft)
-  {
-    if (newLeft != left)
-    {
-      NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__LEFT, newLeft, newLeft));
   }
 
   /**
@@ -174,9 +125,9 @@ public class LetImpl extends ExpImpl implements Let
    * @generated
    */
   @Override
-  public Exp getRight()
+  public Exp getBinding()
   {
-    return right;
+    return binding;
   }
 
   /**
@@ -184,13 +135,13 @@ public class LetImpl extends ExpImpl implements Let
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(Exp newRight, NotificationChain msgs)
+  public NotificationChain basicSetBinding(Exp newBinding, NotificationChain msgs)
   {
-    Exp oldRight = right;
-    right = newRight;
+    Exp oldBinding = binding;
+    binding = newBinding;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET__RIGHT, oldRight, newRight);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET__BINDING, oldBinding, newBinding);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -202,20 +153,70 @@ public class LetImpl extends ExpImpl implements Let
    * @generated
    */
   @Override
-  public void setRight(Exp newRight)
+  public void setBinding(Exp newBinding)
   {
-    if (newRight != right)
+    if (newBinding != binding)
     {
       NotificationChain msgs = null;
-      if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__RIGHT, null, msgs);
-      if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__RIGHT, null, msgs);
-      msgs = basicSetRight(newRight, msgs);
+      if (binding != null)
+        msgs = ((InternalEObject)binding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BINDING, null, msgs);
+      if (newBinding != null)
+        msgs = ((InternalEObject)newBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BINDING, null, msgs);
+      msgs = basicSetBinding(newBinding, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__BINDING, newBinding, newBinding));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Exp getBody()
+  {
+    return body;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBody(Exp newBody, NotificationChain msgs)
+  {
+    Exp oldBody = body;
+    body = newBody;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setBody(Exp newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__BODY, newBody, newBody));
   }
 
   /**
@@ -228,10 +229,10 @@ public class LetImpl extends ExpImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__LEFT:
-        return basicSetLeft(null, msgs);
-      case MathPackage.LET__RIGHT:
-        return basicSetRight(null, msgs);
+      case MathPackage.LET__BINDING:
+        return basicSetBinding(null, msgs);
+      case MathPackage.LET__BODY:
+        return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -246,12 +247,12 @@ public class LetImpl extends ExpImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__LEFT:
-        return getLeft();
       case MathPackage.LET__NAME:
         return getName();
-      case MathPackage.LET__RIGHT:
-        return getRight();
+      case MathPackage.LET__BINDING:
+        return getBinding();
+      case MathPackage.LET__BODY:
+        return getBody();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -266,14 +267,14 @@ public class LetImpl extends ExpImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__LEFT:
-        setLeft((Exp)newValue);
-        return;
       case MathPackage.LET__NAME:
         setName((String)newValue);
         return;
-      case MathPackage.LET__RIGHT:
-        setRight((Exp)newValue);
+      case MathPackage.LET__BINDING:
+        setBinding((Exp)newValue);
+        return;
+      case MathPackage.LET__BODY:
+        setBody((Exp)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -289,14 +290,14 @@ public class LetImpl extends ExpImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__LEFT:
-        setLeft((Exp)null);
-        return;
       case MathPackage.LET__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case MathPackage.LET__RIGHT:
-        setRight((Exp)null);
+      case MathPackage.LET__BINDING:
+        setBinding((Exp)null);
+        return;
+      case MathPackage.LET__BODY:
+        setBody((Exp)null);
         return;
     }
     super.eUnset(featureID);
@@ -312,14 +313,52 @@ public class LetImpl extends ExpImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__LEFT:
-        return left != null;
       case MathPackage.LET__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MathPackage.LET__RIGHT:
-        return right != null;
+      case MathPackage.LET__BINDING:
+        return binding != null;
+      case MathPackage.LET__BODY:
+        return body != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Binding.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MathPackage.LET__NAME: return MathPackage.BINDING__NAME;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Binding.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MathPackage.BINDING__NAME: return MathPackage.LET__NAME;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

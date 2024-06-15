@@ -3,6 +3,11 @@
  */
 package dk.sdu.mmmi.mdsd.validation
 
+import dk.sdu.mmmi.mdsd.math.Var
+import dk.sdu.mmmi.mdsd.math.MathPackage
+import org.eclipse.xtext.validation.Check
+import dk.sdu.mmmi.mdsd.math.Program
+import dk.sdu.mmmi.mdsd.math.Type
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +16,18 @@ package dk.sdu.mmmi.mdsd.validation
  */
 class MathValidator extends AbstractMathValidator {
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MathPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	public static final String VAR_UNIQUE = 'var_unique'
 	
+	@Check
+	def void uniqueGlobalVariableDefinition(Var binding){
+		if((binding.eContainer as Program).exp.filter[name == binding.name].size > 1)
+			error("Duplicate global variable", MathPackage.eINSTANCE.binding_Name, VAR_UNIQUE)
+	}
+	
+	@Check
+	def void validType(Type type) {
+		if (!(type.name == 'int' || type.name == 'float' || type.name == 'bool')) {
+			error(type.name + " is not a valid datatype", MathPackage.Literals.TYPE__NAME)
+		}
+	}
 }

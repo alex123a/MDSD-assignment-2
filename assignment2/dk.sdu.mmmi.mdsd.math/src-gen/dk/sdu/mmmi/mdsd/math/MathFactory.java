@@ -24,22 +24,31 @@ public interface MathFactory extends EFactory
   MathFactory eINSTANCE = dk.sdu.mmmi.mdsd.math.impl.MathFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Exp</em>'.
+   * Returns a new object of class '<em>Program</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp</em>'.
+   * @return a new object of class '<em>Program</em>'.
    * @generated
    */
-  MathExp createMathExp();
+  Program createProgram();
 
   /**
-   * Returns a new object of class '<em>Exp</em>'.
+   * Returns a new object of class '<em>External</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Exp</em>'.
+   * @return a new object of class '<em>External</em>'.
    * @generated
    */
-  Exp createExp();
+  External createExternal();
+
+  /**
+   * Returns a new object of class '<em>Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type</em>'.
+   * @generated
+   */
+  Type createType();
 
   /**
    * Returns a new object of class '<em>Var</em>'.
@@ -60,22 +69,40 @@ public interface MathFactory extends EFactory
   Let createLet();
 
   /**
-   * Returns a new object of class '<em>In</em>'.
+   * Returns a new object of class '<em>Exp</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>In</em>'.
+   * @return a new object of class '<em>Exp</em>'.
    * @generated
    */
-  In createIn();
+  Exp createExp();
 
   /**
-   * Returns a new object of class '<em>End</em>'.
+   * Returns a new object of class '<em>External Content</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>End</em>'.
+   * @return a new object of class '<em>External Content</em>'.
    * @generated
    */
-  End createEnd();
+  ExternalContent createExternalContent();
+
+  /**
+   * Returns a new object of class '<em>Binding</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Binding</em>'.
+   * @generated
+   */
+  Binding createBinding();
+
+  /**
+   * Returns a new object of class '<em>Variable Use</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Use</em>'.
+   * @generated
+   */
+  VariableUse createVariableUse();
 
   /**
    * Returns a new object of class '<em>Plus</em>'.
@@ -123,13 +150,13 @@ public interface MathFactory extends EFactory
   MyNumber createMyNumber();
 
   /**
-   * Returns a new object of class '<em>Variable Use</em>'.
+   * Returns a new object of class '<em>Par</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Use</em>'.
+   * @return a new object of class '<em>Par</em>'.
    * @generated
    */
-  VariableUse createVariableUse();
+  Par createPar();
 
   /**
    * Returns the package supported by this factory.

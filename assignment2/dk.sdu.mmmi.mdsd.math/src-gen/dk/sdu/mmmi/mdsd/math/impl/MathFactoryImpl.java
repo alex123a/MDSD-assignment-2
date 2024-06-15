@@ -65,18 +65,21 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
   {
     switch (eClass.getClassifierID())
     {
-      case MathPackage.MATH_EXP: return createMathExp();
-      case MathPackage.EXP: return createExp();
+      case MathPackage.PROGRAM: return createProgram();
+      case MathPackage.EXTERNAL: return createExternal();
+      case MathPackage.TYPE: return createType();
       case MathPackage.VAR: return createVar();
       case MathPackage.LET: return createLet();
-      case MathPackage.IN: return createIn();
-      case MathPackage.END: return createEnd();
+      case MathPackage.EXP: return createExp();
+      case MathPackage.EXTERNAL_CONTENT: return createExternalContent();
+      case MathPackage.BINDING: return createBinding();
+      case MathPackage.VARIABLE_USE: return createVariableUse();
       case MathPackage.PLUS: return createPlus();
       case MathPackage.MINUS: return createMinus();
       case MathPackage.MULT: return createMult();
       case MathPackage.DIV: return createDiv();
       case MathPackage.MY_NUMBER: return createMyNumber();
-      case MathPackage.VARIABLE_USE: return createVariableUse();
+      case MathPackage.PAR: return createPar();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -88,10 +91,10 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public MathExp createMathExp()
+  public Program createProgram()
   {
-    MathExpImpl mathExp = new MathExpImpl();
-    return mathExp;
+    ProgramImpl program = new ProgramImpl();
+    return program;
   }
 
   /**
@@ -100,10 +103,22 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public Exp createExp()
+  public External createExternal()
   {
-    ExpImpl exp = new ExpImpl();
-    return exp;
+    ExternalImpl external = new ExternalImpl();
+    return external;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Type createType()
+  {
+    TypeImpl type = new TypeImpl();
+    return type;
   }
 
   /**
@@ -136,10 +151,10 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public In createIn()
+  public Exp createExp()
   {
-    InImpl in = new InImpl();
-    return in;
+    ExpImpl exp = new ExpImpl();
+    return exp;
   }
 
   /**
@@ -148,10 +163,34 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public End createEnd()
+  public ExternalContent createExternalContent()
   {
-    EndImpl end = new EndImpl();
-    return end;
+    ExternalContentImpl externalContent = new ExternalContentImpl();
+    return externalContent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Binding createBinding()
+  {
+    BindingImpl binding = new BindingImpl();
+    return binding;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VariableUse createVariableUse()
+  {
+    VariableUseImpl variableUse = new VariableUseImpl();
+    return variableUse;
   }
 
   /**
@@ -220,10 +259,10 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
    * @generated
    */
   @Override
-  public VariableUse createVariableUse()
+  public Par createPar()
   {
-    VariableUseImpl variableUse = new VariableUseImpl();
-    return variableUse;
+    ParImpl par = new ParImpl();
+    return par;
   }
 
   /**

@@ -4,96 +4,132 @@
 package dk.sdu.mmmi.mdsd.generator
 
 import dk.sdu.mmmi.mdsd.math.Div
-import dk.sdu.mmmi.mdsd.math.Exp
-import dk.sdu.mmmi.mdsd.math.MathExp
 import dk.sdu.mmmi.mdsd.math.Minus
 import dk.sdu.mmmi.mdsd.math.Mult
 import dk.sdu.mmmi.mdsd.math.Plus
 import dk.sdu.mmmi.mdsd.math.Var
 import dk.sdu.mmmi.mdsd.math.MyNumber
 import dk.sdu.mmmi.mdsd.math.Let
-import dk.sdu.mmmi.mdsd.math.In
 import dk.sdu.mmmi.mdsd.math.VariableUse
 import java.util.HashMap
 import java.util.Map
-import javax.swing.JOptionPane
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import dk.sdu.mmmi.mdsd.math.End
+import dk.sdu.mmmi.mdsd.math.Program
+import dk.sdu.mmmi.mdsd.math.Par
+import dk.sdu.mmmi.mdsd.math.ExternalContent
+import java.util.List
+import dk.sdu.mmmi.mdsd.math.Exp
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
+ 
+ // The solution below is a generator
 class MathGenerator extends AbstractGenerator {
-
-	static Map<String, Integer> variables = new HashMap();
+	
+	static Map<String, Object> variables = new HashMap();
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val math = resource.allContents.filter(MathExp).next
-		val result = math.compute
+		for (program : resource.allContents.toIterable.filter(Program)) {
+			fsa.generateFile(
+				"math_expression/" + program.name + ".java", compile(program)
+			)
+		}
+	}
+	
+	def compile(Program program) {
+		val parameterNames = newArrayList("a", "b", "c", "d", "e", "f", "g")
+		variables.clear();
+		'''
+		package math_expression;
 		
-		// You can replace with hovering, see Bettini Chapter 8
-		result.displayPanel
-	}
-	
-	//
-	// Compute function: computes value of expression
-	// Note: written according to illegal left-recursive grammar, requires fix
-	//
-	
-	def static compute(MathExp math) { 
-		math.exp.computeExp
-		return variables
-	}
-	
-	def static int computeExp(Exp exp) {
-		if (exp instanceof Plus) {
-			return exp.left.computeExp + exp.right.computeExp
-		} else if (exp instanceof Minus) {
-			return exp.left.computeExp - exp.right.computeExp
-		} else if (exp instanceof Mult) {
-			return exp.left.computeExp * exp.right.computeExp
-		} else if (exp instanceof Div) {
-			return exp.left.computeExp / exp.right.computeExp
-		} else if (exp instanceof MyNumber) {
-			return exp.value
-		} else if (exp instanceof VariableUse) {
-			return variables.get(exp.value)
-		} else if (exp instanceof Var) {
-			exp.left.computeExp
-			var value = exp.right.computeExp
-			variables.put(exp.name, value)
-			return 0
-		} else if (exp instanceof Let) {
-			exp.left.computeExp
-			var value = exp.right.computeExp
-			variables.put(exp.name, value)
-			return 0
-		} else if (exp instanceof In) {
-			return exp.left.computeExp + exp.right.computeExp
-		} else if (exp instanceof End) {
-			return exp.left.computeExp + exp.right.computeExp
-		} else {
-			return 0
+		public class «program.name» {
+			
+			«IF !program.externals.isEmpty()»
+				private External external; 
+				 
+				public «program.name»(External external) { 
+					this.external = external;
+				} 
+			«ENDIF»
+			
+			«FOR variable : program.exp»
+			public int «variable.name»;
+			«ENDFOR»
+			
+			public void compute() {
+				«FOR variable : program.exp»
+					«IF variable.getClass() != Let»
+						«variable.name» = «IF variable.expression.getClass() !== ExternalContent»«variable.expression.computeExpression»«ENDIF»«IF variable.expression.getClass() === ExternalContent»«variable.expression.computeExpression»«ENDIF»;
+					«ENDIF»
+				«ENDFOR»
+			}
+			
+			«IF !program.externals.isEmpty()»
+				public interface External { 
+					«FOR external : program.externals»
+						public int «external.name»(«FOR parameter: external.paren»«parameter.name» «parameterNames.get(external.paren.indexOf(parameter))»«IF external.paren.last !== parameter»,«ENDIF»«ENDFOR»);
+						
+					«ENDFOR»
+				}
+			«ENDIF»
 		}
+		'''
 	}
 	
-	/*
-	 	def static int computePrim(Primary factor) { 
-			87
-		}
-	 */
+	def static dispatch computeExpression(ExternalContent exp) {
+		return '''external.«exp.name»(«FOR param: exp.paren»«param.computeExpression»«IF exp.paren.last !== param»,«ENDIF»«ENDFOR»)'''
+	}
+	
+	def static dispatch computeExpression(Par exp) {
+		return '''(«exp.paren.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(MyNumber exp) {
+		return '''«exp.value»'''
+	}
 
-	def void displayPanel(Map<String, Integer> result) {
-		var resultString = ""
-		for (entry : result.entrySet()) {
-         	resultString += "var " + entry.getKey() + " = " + entry.getValue() + "\n"
-        }
-		
-		JOptionPane.showMessageDialog(null, resultString ,"Math Language", JOptionPane.INFORMATION_MESSAGE)
+	def static dispatch computeExpression(Plus exp) {
+		return '''(«exp.left.computeExpression» + «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Minus exp) {
+		return '''(«exp.left.computeExpression» - «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Mult exp) {
+		return '''(«exp.left.computeExpression» * «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Div exp) {
+		return '''(«exp.left.computeExpression» / «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Let exp) {
+		exp.body.computeExpression
+	}
+	
+	def static dispatch computeExpression(Var binding) {
+		variables.put(binding.name, binding.expression.computeExpression())
+		return variables.get(binding.name)
+	}
+	
+	def static dispatch computeExpression(VariableUse exp) {
+		exp.ref.computeBinding
+	}
+
+	def static dispatch computeBinding(Var binding){
+		if(!variables.containsKey(binding.name))
+			binding.computeExpression()			
+		variables.get(binding.name)
+	}
+	
+	def static dispatch computeBinding(Let binding){
+		binding.binding.computeExpression
 	}
 }

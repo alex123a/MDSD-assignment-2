@@ -13,7 +13,7 @@ package dk.sdu.mmmi.mdsd.math;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.VariableUse#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.VariableUse#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @see dk.sdu.mmmi.mdsd.math.MathPackage#getVariableUse()
@@ -23,25 +23,25 @@ package dk.sdu.mmmi.mdsd.math;
 public interface VariableUse extends Exp
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getVariableUse_Value()
+   * @return the value of the '<em>Ref</em>' reference.
+   * @see #setRef(Binding)
+   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getVariableUse_Ref()
    * @model
    * @generated
    */
-  String getValue();
+  Binding getRef();
 
   /**
-   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.VariableUse#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.VariableUse#getRef <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Ref</em>' reference.
+   * @see #getRef()
    * @generated
    */
-  void setValue(String value);
+  void setRef(Binding value);
 
 } // VariableUse
